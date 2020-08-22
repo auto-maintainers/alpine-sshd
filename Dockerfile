@@ -8,6 +8,8 @@ RUN    apk update \
     && ssh-keygen -A \
     && sed -i s/^#PasswordAuthentication\ yes/PasswordAuthentication\ no/ /etc/ssh/sshd_config
 
+RUN wget https://github.com/mudler/yip/releases/download/0.5.1/yip-0.5.1-linux-amd64 -O /usr/bin/yip
+RUN chmod +x /usr/bin/yip
 # This image expects AUTHORIZED_KEYS environment variable to contain your ssh public key.
 
 COPY docker-entrypoint.sh /
